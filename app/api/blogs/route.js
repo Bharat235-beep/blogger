@@ -1,8 +1,6 @@
 import connectDb from "@/lib/config/connectDb";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import fs from 'fs'
-import cloudinaryConnect from "@/lib/config/cloudinaryConnect";
-import {v2 as cloudinary} from 'cloudinary'
 import blogModel from "@/lib/models/blogModel";
 
 const loadConnect=async()=>{
