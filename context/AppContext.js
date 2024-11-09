@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 export const AppContext=createContext()
 export const AppProvider=(props)=>{
-    const [token,setToken]=useState((localStorage.getItem('blog-token')?localStorage.getItem('blog-token'):null))
+    const [token,setToken]=useState(null)
     const [user,setUser]=useState(null);
     const [blogs,setBlogs]=useState(null)
 
@@ -87,6 +87,11 @@ export const AppProvider=(props)=>{
             return toast.update(toastId,{isLoading:false,type:'error',render:"An Error Occoured",autoClose:4000,closeButton:null})  
         }
     }
+    useEffect(()=>{
+        if(localStorage.getItem('blog-token')){
+            setToken(localStorage.getItem('blog-token'))
+        }
+    },[])
     useEffect(()=>{
         if(token){
             getUser()

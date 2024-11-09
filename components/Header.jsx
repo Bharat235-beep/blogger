@@ -2,7 +2,7 @@
 import { assets } from '@/assets/assets'
 import { AppContext } from '@/context/AppContext'
 import Image from 'next/image'
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import Typewriter from 'typewriter-effect';
 
 const Header = () => {
@@ -13,11 +13,7 @@ const Header = () => {
     setToken(null)
     setUser(null)
   }
-  useEffect(()=>{
-    console.log(token)
-    if(user)
-    console.log(user)
-  },[token])
+
 
   return (
     <div className='mx-10 py-5'>

@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 export const AdminContext=createContext()
 
 export const AdminProvider=(props)=>{
-    const [atoken,setAtoken]=useState(localStorage.getItem('blog-app-atoken')?localStorage.getItem('blog-app-atoken'):null)
+    const [atoken,setAtoken]=useState(null)
     const [users,setUsers]=useState(null);
     const router=useRouter()
     const getUsers=async()=>{
@@ -30,6 +30,11 @@ export const AdminProvider=(props)=>{
         setAtoken(null)
         router.push('/admin')
     }
+    useEffect(()=>{
+        if(localStorage.getItem('blog-app-atoken')){
+            setAtoken(localStorage.getItem('blog-app-atoken'))
+        }
+    },[])
 
     const value={
         atoken,setAtoken,
