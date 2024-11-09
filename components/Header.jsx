@@ -3,7 +3,6 @@ import { assets } from '@/assets/assets'
 import { AppContext } from '@/context/AppContext'
 import Image from 'next/image'
 import React, { useContext, useEffect } from 'react'
-import { ReactTyped } from 'react-typed'
 import Typewriter from 'typewriter-effect';
 
 const Header = () => {
@@ -32,7 +31,6 @@ const Header = () => {
       </div>
       <div className='flex flex-col justify-center items-center gap-3 mt-10'>
         {token && user &&<h1 className='text-3xl text-violet-600 sm:text-4xl font-medium'>
-         {/* { user &&<ReactTyped strings={`Hi,${user.name}`} typeSpeed={40} startWhenVisible={true}/>} */}
           <Typewriter
   options={{
     strings: [`Hi,${user.name}`],
