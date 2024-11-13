@@ -7,7 +7,7 @@ import React, { useContext } from 'react'
 const BlogItem = (props) => {
 
     const {_id,title,image,description,category,type,blogId}=props
-    const {saveBlog,deleteBlog}=useContext(AppContext)
+    const {token,saveBlog,deleteBlog}=useContext(AppContext)
   
   return (
     <div className='w-[290px] border border-black m-2 hover:shadow-[-7px_7px_0px]'>
@@ -23,7 +23,7 @@ const BlogItem = (props) => {
       <Link href={`blogs/${type==='Save'?_id:blogId}`}>
       <button className='flex gap-1 text-gray-900 font-medium items-center justify-center my-2'>Read more <Image alt='' src={assets.arrow} width={12}/></button>
       </Link>
-      {type==='Save' ?<button type='button' className='text-green-600 font-medium bg-green-50 px-1 rounded' onClick={()=>saveBlog({...props})}>Save</button>
+      {type==='Save' ?token && <button type='button' className='text-green-600 font-medium bg-green-50 px-1 rounded' onClick={()=>saveBlog({...props})}>Save</button>
       :
       <button type='button' className='text-red-600 font-medium bg-red-50 px-1 rounded' onClick={()=>deleteBlog(_id)}>Delete</button>
       }

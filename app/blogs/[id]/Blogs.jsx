@@ -12,17 +12,17 @@ const Blogs = () => {
   const [data, setData] = useState(null)
   const getBlogData = async() => {
     try {
-      const data=(await axios.get('/api/blogs',{
+      const res=await axios.get('/api/blogs',{
         params:{
           id:id
         }
-      })).data
-      if(data.success){
-        console.log(data)
-        setData(data.blog)
+      })
+      if(res.data.success){
+        console.log(res.data)
+        setData(res.data.blog)
       }
       else{
-        toast.error(data.message)
+        toast.error(res.data.message)
       }
     } catch (error) {
       console.log(error)
@@ -57,15 +57,15 @@ const Blogs = () => {
         <div>
         <Image alt='' src={data.authorImg} width={40} height={40} className='rounded-full border-3 mx-auto border-white'/>
         <p className='font-medium text-lg text-center'>{data.author}</p>
-        <p className='font-medium text-sm text-center text-gray-600'>Uploaded On {new Date(data.date).toDateString()}</p>
+        <p className='font-medium text-xs sm:text-sm text-center text-gray-600'>Uploaded On {new Date(data.date).toDateString()}</p>
         </div>
    
       </div>
-      <div>
+      <div className='px-2 sm:px-0'>
         <Image alt='' src={data.image} width={700} height={400} className='border-4 border-white -mt-4'/>
         <p className='text-2xl font-semibold'>Description</p>
         <div>
-          <p>{data.description}</p>
+          <p className='text-sm sm:text-base'>{data.description}</p>
         </div>
       <div className='flex flex-col gap-3 mt-5'>
         <p className='text-gray-900 font-medium'>Share this article on social media</p>
